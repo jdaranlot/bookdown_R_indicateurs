@@ -3,7 +3,7 @@ language:
   ui:
     chapter_name: "Chapter "
 rmd_files: [
-  "index.Rmd",
+  "Page_maitresse.Rmd",
   "setup.Rmd",
   "chapitre_3.Rmd"]
 delete_merged_file: true 

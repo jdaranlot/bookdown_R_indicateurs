@@ -1,6 +1,6 @@
 --- 
 title: "Bookdown template"
-author: "Oswaldo Forey, adapté de Julie Lowndes"
+author: "Julien Daranlot, adapté de Julie Lowndes"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 # output: bookdown::gitbook
