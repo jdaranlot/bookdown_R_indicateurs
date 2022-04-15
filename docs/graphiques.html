@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Graphiques | Dashboard - continent</title>
+  <meta name="description" content="A mini bookdown tutorial book on how to make bookdown books." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Graphiques | Dashboard - continent" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A mini bookdown tutorial book on how to make bookdown books." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Graphiques | Dashboard - continent" />
+  
+  <meta name="twitter:description" content="A mini bookdown tutorial book on how to make bookdown books." />
+  
+
+<meta name="author" content="Julien Daranlot" />
+
+
+<meta name="date" content="2022-04-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="préparation-des-données.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Mini Bookdown Tutorial</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learn-all-about-bookdown"><i class="fa fa-check"></i><b>1.1</b> Learn all about Bookdown<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>2</b> Préparation des données<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#population"><i class="fa fa-check"></i><b>2.1</b> Population<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nourriture"><i class="fa fa-check"></i><b>2.2</b> Nourriture<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#source-et-type-dénergie"><i class="fa fa-check"></i><b>2.3</b> Source et type d’énergie<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="graphiques.html"><a href="graphiques.html"><i class="fa fa-check"></i><b>3</b> Graphiques<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="graphiques.html"><a href="graphiques.html#echelle-mondiale"><i class="fa fa-check"></i><b>3.1</b> Echelle mondiale<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="graphiques.html"><a href="graphiques.html#population-1"><i class="fa fa-check"></i><b>3.1.1</b> Population<span></span></a></li>
+<li class="chapter" data-level="3.1.2" data-path="graphiques.html"><a href="graphiques.html#nourriture-1"><i class="fa fa-check"></i><b>3.1.2</b> Nourriture<span></span></a></li>
+<li class="chapter" data-level="3.1.3" data-path="graphiques.html"><a href="graphiques.html#source-dénergie"><i class="fa fa-check"></i><b>3.1.3</b> Source d’énergie<span></span></a></li>
+<li class="chapter" data-level="3.1.4" data-path="graphiques.html"><a href="graphiques.html#type-dénergie"><i class="fa fa-check"></i><b>3.1.4</b> Type d’énergie<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="graphiques.html"><a href="graphiques.html#analyse-par-continent"><i class="fa fa-check"></i><b>3.2</b> Analyse par continent<span></span></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="graphiques.html"><a href="graphiques.html#population-2"><i class="fa fa-check"></i><b>3.2.1</b> Population<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphiques.html"><a href="graphiques.html#nourriture-2"><i class="fa fa-check"></i><b>3.2.2</b> Nourriture<span></span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphiques.html"><a href="graphiques.html#source-dénergie-1"><i class="fa fa-check"></i><b>3.2.3</b> Source d’énergie<span></span></a></li>
+<li class="chapter" data-level="3.2.4" data-path="graphiques.html"><a href="graphiques.html#type-dénergie-1"><i class="fa fa-check"></i><b>3.2.4</b> Type d’énergie<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="graphiques.html"><a href="graphiques.html#analyse-par-pays"><i class="fa fa-check"></i><b>3.3</b> Analyse par pays<span></span></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="graphiques.html"><a href="graphiques.html#population-3"><i class="fa fa-check"></i><b>3.3.1</b> Population<span></span></a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphiques.html"><a href="graphiques.html#nourriture-3"><i class="fa fa-check"></i><b>3.3.2</b> Nourriture<span></span></a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphiques.html"><a href="graphiques.html#source-energie"><i class="fa fa-check"></i><b>3.3.3</b> Source energie<span></span></a></li>
+<li class="chapter" data-level="3.3.4" data-path="graphiques.html"><a href="graphiques.html#type-energie"><i class="fa fa-check"></i><b>3.3.4</b> Type energie<span></span></a></li>
+<li class="chapter" data-level="3.3.5" data-path="graphiques.html"><a href="graphiques.html#liste-de-lensemble-des-iso_pays-présents"><i class="fa fa-check"></i><b>3.3.5</b> Liste de l’ensemble des iso_pays présents<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="graphiques.html"><a href="graphiques.html#column"><i class="fa fa-check"></i><b>3.4</b> Column<span></span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-population-mondiale"><i class="fa fa-check"></i><b>3.4.1</b> Evolution de la population mondiale<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-mondiale-de-nourriture"><i class="fa fa-check"></i><b>3.4.2</b> Evolution de la production mondiale de nourriture<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="graphiques.html"><a href="graphiques.html#column-1"><i class="fa fa-check"></i><b>3.5</b> Column<span></span></a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-mondiale-de-source-dénergie"><i class="fa fa-check"></i><b>3.5.1</b> Evolution de la production mondiale de source d’énergie<span></span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-mondiale-de-type-dénergie"><i class="fa fa-check"></i><b>3.5.2</b> Evolution de la production mondiale de type d’énergie<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="graphiques.html"><a href="graphiques.html#column-2"><i class="fa fa-check"></i><b>3.6</b> Column<span></span></a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-population-par-continent"><i class="fa fa-check"></i><b>3.6.1</b> Evolution de la population par continent<span></span></a></li>
+<li class="chapter" data-level="3.6.2" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-de-nourriture-par-continent"><i class="fa fa-check"></i><b>3.6.2</b> Evolution de la production de nourriture par continent<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="graphiques.html"><a href="graphiques.html#column-3"><i class="fa fa-check"></i><b>3.7</b> Column<span></span></a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-par-continent-de-source-dénergie"><i class="fa fa-check"></i><b>3.7.1</b> Evolution de la production par continent de source d’énergie<span></span></a></li>
+<li class="chapter" data-level="3.7.2" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-par-continent-de-type-dénergie"><i class="fa fa-check"></i><b>3.7.2</b> Evolution de la production par continent de type d’énergie<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Dashboard - continent</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graphiques" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Graphiques<a href="graphiques.html#graphiques" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="echelle-mondiale" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Echelle mondiale<a href="graphiques.html#echelle-mondiale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="population-1" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Population<a href="graphiques.html#population-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="graphiques.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span> (<span class="st">&quot;population.Rdata&quot;</span>)</span>
+<span id="cb4-2"><a href="graphiques.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="graphiques.html#cb4-3" aria-hidden="true" tabindex="-1"></a>population_mondiale <span class="ot">&lt;-</span> population <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="graphiques.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">&quot;WORLD&quot;</span>)</span>
+<span id="cb4-5"><a href="graphiques.html#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="graphiques.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(population_mondiale, <span class="at">file =</span> <span class="st">&quot;population_mondiale.RData&quot;</span>)</span>
+<span id="cb4-7"><a href="graphiques.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(population_mondiale)<span class="sc">+</span></span>
+<span id="cb4-8"><a href="graphiques.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> annee, <span class="at">y =</span> population)<span class="sc">+</span></span>
+<span id="cb4-9"><a href="graphiques.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-10"><a href="graphiques.html#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">&quot;#8ccde3&quot;</span>,</span>
+<span id="cb4-11"><a href="graphiques.html#cb4-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb4-12"><a href="graphiques.html#cb4-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">linetype =</span> <span class="dv">1</span>),</span>
+<span id="cb4-13"><a href="graphiques.html#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linetype=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb4-14"><a href="graphiques.html#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Année&quot;</span>)<span class="sc">+</span></span>
+<span id="cb4-15"><a href="graphiques.html#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Population&quot;</span>)<span class="sc">+</span></span>
+<span id="cb4-16"><a href="graphiques.html#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="series_files/figure-html/GRAPHIQUE%20POPULATION%20MONDIALE-1.png" width="672" /></p>
+</div>
+<div id="nourriture-1" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Nourriture<a href="graphiques.html#nourriture-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="graphiques.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;nourriture.RData&quot;</span>)</span>
+<span id="cb5-2"><a href="graphiques.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="graphiques.html#cb5-3" aria-hidden="true" tabindex="-1"></a>nourriture_mondiale <span class="ot">&lt;-</span> nourriture <span class="sc">|&gt;</span>  </span>
+<span id="cb5-4"><a href="graphiques.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">&quot;World&quot;</span>)</span>
+<span id="cb5-5"><a href="graphiques.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="graphiques.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nourriture_mondiale, <span class="at">file =</span> <span class="st">&quot;nourriture_mondiale.RData&quot;</span>)</span>
+<span id="cb5-7"><a href="graphiques.html#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="graphiques.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nourriture_mondiale)<span class="sc">+</span></span>
+<span id="cb5-9"><a href="graphiques.html#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> annee, <span class="at">y =</span> production, <span class="at">color=</span>Item)<span class="sc">+</span></span>
+<span id="cb5-10"><a href="graphiques.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-11"><a href="graphiques.html#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">&quot;#8ccde3&quot;</span>,</span>
+<span id="cb5-12"><a href="graphiques.html#cb5-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb5-13"><a href="graphiques.html#cb5-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">linetype =</span> <span class="dv">1</span>),</span>
+<span id="cb5-14"><a href="graphiques.html#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb5-15"><a href="graphiques.html#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linetype=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb5-16"><a href="graphiques.html#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> Item))</span></code></pre></div>
+<p><img src="series_files/figure-html/GRAPHQUIQUE%20NOURRITURE%20MONDIALE-1.png" width="672" /></p>
+</div>
+<div id="source-dénergie" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Source d’énergie<a href="graphiques.html#source-dénergie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="graphiques.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;energy_source.Rdata&quot;</span>)</span>
+<span id="cb6-2"><a href="graphiques.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="graphiques.html#cb6-3" aria-hidden="true" tabindex="-1"></a>energy_source_monde <span class="ot">&lt;-</span> energy_source <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a href="graphiques.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;World&quot;</span>)</span>
+<span id="cb6-5"><a href="graphiques.html#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="graphiques.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_source_monde, <span class="at">file =</span> <span class="st">&quot;energy_source_monde.RData&quot;</span>)</span>
+<span id="cb6-7"><a href="graphiques.html#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="graphiques.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">subset</span>(energy_source_monde, consumption <span class="sc">&gt;</span> <span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb6-9"><a href="graphiques.html#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> annee, <span class="at">y =</span> consumption, <span class="at">fill=</span>energy_source)<span class="sc">+</span></span>
+<span id="cb6-10"><a href="graphiques.html#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-11"><a href="graphiques.html#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb6-12"><a href="graphiques.html#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linetype=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb6-13"><a href="graphiques.html#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="series_files/figure-html/ENERGY%20MONDE%20SOURCE-1.png" width="672" /></p>
+</div>
+<div id="type-dénergie" class="section level3 hasAnchor" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Type d’énergie<a href="graphiques.html#type-dénergie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="graphiques.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;energy_type.RData&quot;</span>)</span>
+<span id="cb7-2"><a href="graphiques.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="graphiques.html#cb7-3" aria-hidden="true" tabindex="-1"></a>energy_type_monde <span class="ot">&lt;-</span> energy_type <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="graphiques.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;World&quot;</span>)</span>
+<span id="cb7-5"><a href="graphiques.html#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="graphiques.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_type_monde, <span class="at">file =</span> <span class="st">&quot;energy_type_monde.RData&quot;</span>)</span>
+<span id="cb7-7"><a href="graphiques.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="graphiques.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">subset</span>(energy_type_monde, consumption <span class="sc">&gt;</span> <span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb7-9"><a href="graphiques.html#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> annee, <span class="at">y =</span> consumption, <span class="at">fill=</span>energy_type)<span class="sc">+</span></span>
+<span id="cb7-10"><a href="graphiques.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-11"><a href="graphiques.html#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb7-12"><a href="graphiques.html#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linetype=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb7-13"><a href="graphiques.html#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="series_files/figure-html/ENERGY%20MONDE%20TYPE-1.png" width="672" /></p>
+</div>
+</div>
+<div id="analyse-par-continent" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Analyse par continent<a href="graphiques.html#analyse-par-continent" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="population-2" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Population<a href="graphiques.html#population-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="graphiques.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;population.RData&quot;</span>)</span>
+<span id="cb8-2"><a href="graphiques.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="graphiques.html#cb8-3" aria-hidden="true" tabindex="-1"></a>population_continent <span class="ot">&lt;-</span> population <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="graphiques.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (Type <span class="sc">==</span> <span class="st">&quot;Region&quot;</span>)</span>
+<span id="cb8-5"><a href="graphiques.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="graphiques.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(population_continent, <span class="at">file =</span> <span class="st">&quot;population_continent.RData&quot;</span>)</span>
+<span id="cb8-7"><a href="graphiques.html#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="graphiques.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(population_continent)<span class="sc">+</span></span>
+<span id="cb8-9"><a href="graphiques.html#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(annee, population, <span class="at">color =</span> region)<span class="sc">+</span></span>
+<span id="cb8-10"><a href="graphiques.html#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-11"><a href="graphiques.html#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,</span>
+<span id="cb8-12"><a href="graphiques.html#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">&quot;#8ccde3&quot;</span>,</span>
+<span id="cb8-13"><a href="graphiques.html#cb8-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb8-14"><a href="graphiques.html#cb8-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">linetype =</span> <span class="dv">1</span>),</span>
+<span id="cb8-15"><a href="graphiques.html#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linetype=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb8-16"><a href="graphiques.html#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="series_files/figure-html/POPULATION%20CONTINENT%20GRAPHIQUE-1.png" width="672" /></p>
+</div>
+<div id="nourriture-2" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Nourriture<a href="graphiques.html#nourriture-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="graphiques.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;nourriture.Rdata&quot;</span>)</span>
+<span id="cb9-2"><a href="graphiques.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="graphiques.html#cb9-3" aria-hidden="true" tabindex="-1"></a>nourriture_continent <span class="ot">&lt;-</span> nourriture <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="graphiques.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">&quot;Europe&quot;</span> <span class="sc">|</span></span>
+<span id="cb9-5"><a href="graphiques.html#cb9-5" aria-hidden="true" tabindex="-1"></a>           region <span class="sc">==</span> <span class="st">&quot;Africa&quot;</span> <span class="sc">|</span></span>
+<span id="cb9-6"><a href="graphiques.html#cb9-6" aria-hidden="true" tabindex="-1"></a>           region <span class="sc">==</span> <span class="st">&quot;Asia&quot;</span> <span class="sc">|</span></span>
+<span id="cb9-7"><a href="graphiques.html#cb9-7" aria-hidden="true" tabindex="-1"></a>           region <span class="sc">==</span> <span class="st">&quot;Northern America&quot;</span> <span class="sc">|</span></span>
+<span id="cb9-8"><a href="graphiques.html#cb9-8" aria-hidden="true" tabindex="-1"></a>           region <span class="sc">==</span> <span class="st">&quot;South America&quot;</span> <span class="sc">|</span></span>
+<span id="cb9-9"><a href="graphiques.html#cb9-9" aria-hidden="true" tabindex="-1"></a>           region <span class="sc">==</span> <span class="st">&quot;Oceania&quot;</span>)</span>
+<span id="cb9-10"><a href="graphiques.html#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="graphiques.html#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nourriture_continent, <span class="at">file =</span> <span class="st">&quot;nourriture_continent.RData&quot;</span>)</span>
+<span id="cb9-12"><a href="graphiques.html#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="graphiques.html#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nourriture_continent)<span class="sc">+</span></span>
+<span id="cb9-14"><a href="graphiques.html#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> annee, <span class="at">y =</span> production, <span class="at">color=</span>Item)<span class="sc">+</span></span>
+<span id="cb9-15"><a href="graphiques.html#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb9-16"><a href="graphiques.html#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb9-17"><a href="graphiques.html#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>, <span class="at">vjust=</span><span class="dv">1</span>),</span>
+<span id="cb9-18"><a href="graphiques.html#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linetype=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb9-19"><a href="graphiques.html#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>region)<span class="sc">+</span></span>
+<span id="cb9-20"><a href="graphiques.html#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="series_files/figure-html/NOURRITURE%20CONTINENT%20GRAPHIQUE-1.png" width="672" /></p>
+</div>
+<div id="source-dénergie-1" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Source d’énergie<a href="graphiques.html#source-dénergie-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="graphiques.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;energy_source.RData&quot;</span>)</span>
+<span id="cb10-2"><a href="graphiques.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="graphiques.html#cb10-3" aria-hidden="true" tabindex="-1"></a>energy_source_continent <span class="ot">&lt;-</span> energy_source <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="graphiques.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, annee, energy_source) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="graphiques.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">consumption =</span> <span class="fu">sum</span>(consumption, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb10-6"><a href="graphiques.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">!=</span> <span class="st">&quot;NA&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-7"><a href="graphiques.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb10-8"><a href="graphiques.html#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="graphiques.html#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_source_continent, <span class="at">file =</span> <span class="st">&quot;energy_source_continent.RData&quot;</span>)</span>
+<span id="cb10-10"><a href="graphiques.html#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="graphiques.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">subset</span>(energy_source_continent, consumption <span class="sc">&gt;</span> <span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb10-12"><a href="graphiques.html#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> annee, <span class="at">y =</span> consumption, <span class="at">fill=</span>energy_source)<span class="sc">+</span></span>
+<span id="cb10-13"><a href="graphiques.html#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-14"><a href="graphiques.html#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb10-15"><a href="graphiques.html#cb10-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>),</span>
+<span id="cb10-16"><a href="graphiques.html#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linetype=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb10-17"><a href="graphiques.html#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>region)<span class="sc">+</span></span>
+<span id="cb10-18"><a href="graphiques.html#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="series_files/figure-html/ENERGIE%20CONTINENT%20SOURCE-1.png" width="672" /></p>
+</div>
+<div id="type-dénergie-1" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Type d’énergie<a href="graphiques.html#type-dénergie-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="graphiques.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;energy_type.RData&quot;</span>)</span>
+<span id="cb11-2"><a href="graphiques.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="graphiques.html#cb11-3" aria-hidden="true" tabindex="-1"></a>energy_type_continent <span class="ot">&lt;-</span> energy_type <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="graphiques.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, annee, energy_type) <span class="sc">|&gt;</span> </span>
+<span id="cb11-5"><a href="graphiques.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">consumption =</span> <span class="fu">sum</span>(consumption, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-6"><a href="graphiques.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">!=</span> <span class="st">&quot;NA&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-7"><a href="graphiques.html#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb11-8"><a href="graphiques.html#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="graphiques.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_type_continent, <span class="at">file =</span> <span class="st">&quot;energy_type_continent.RData&quot;</span>)</span>
+<span id="cb11-10"><a href="graphiques.html#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="graphiques.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">subset</span>(energy_type_continent, consumption <span class="sc">&gt;</span> <span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb11-12"><a href="graphiques.html#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> annee, <span class="at">y =</span> consumption, <span class="at">fill=</span>energy_type)<span class="sc">+</span></span>
+<span id="cb11-13"><a href="graphiques.html#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb11-14"><a href="graphiques.html#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb11-15"><a href="graphiques.html#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>),</span>
+<span id="cb11-16"><a href="graphiques.html#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linetype=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb11-17"><a href="graphiques.html#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>region)<span class="sc">+</span></span>
+<span id="cb11-18"><a href="graphiques.html#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<p><img src="series_files/figure-html/ENERGIE%20CONTINENT%20TYPE-1.png" width="672" /></p>
+</div>
+</div>
+<div id="analyse-par-pays" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Analyse par pays<a href="graphiques.html#analyse-par-pays" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="population-3" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Population<a href="graphiques.html#population-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="graphiques.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;population.RData&quot;</span>)</span>
+<span id="cb12-2"><a href="graphiques.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;BetterWorld.RData&quot;</span>)</span>
+<span id="cb12-3"><a href="graphiques.html#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="graphiques.html#cb12-4" aria-hidden="true" tabindex="-1"></a>population_pays <span class="ot">&lt;-</span> population <span class="sc">|&gt;</span> </span>
+<span id="cb12-5"><a href="graphiques.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Type <span class="sc">==</span> <span class="st">&quot;Country/Area&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-6"><a href="graphiques.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb12-7"><a href="graphiques.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(BetterWorld <span class="sc">|&gt;</span> <span class="fu">select</span>(iso_a3, geom2), <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;iso_code2&quot;</span> <span class="ot">=</span> <span class="st">&quot;iso_a3&quot;</span>)) </span>
+<span id="cb12-8"><a href="graphiques.html#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="graphiques.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(population_pays, <span class="at">file=</span><span class="st">&quot;population_pays.RData&quot;</span>)</span>
+<span id="cb12-10"><a href="graphiques.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(population_pays, <span class="at">file=</span><span class="st">&quot;~/R_studio/Projet/indicateurs_mondiaux/population_pays.RData&quot;</span>)</span>
+<span id="cb12-11"><a href="graphiques.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(population_pays, <span class="at">file=</span><span class="st">&quot;~/R_studio/Projet/cartes/population_pays_carto.RData&quot;</span>)</span>
+<span id="cb12-12"><a href="graphiques.html#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="graphiques.html#cb12-13" aria-hidden="true" tabindex="-1"></a>population_pays <span class="sc">|&gt;</span></span>
+<span id="cb12-14"><a href="graphiques.html#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(annee <span class="sc">==</span> <span class="dv">2010</span> <span class="sc">|</span> <span class="fu">is.na</span>(annee)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-15"><a href="graphiques.html#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb12-16"><a href="graphiques.html#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">log10</span>(population), <span class="at">geometry =</span> geom2),<span class="at">color=</span><span class="st">&quot;white&quot;</span>,<span class="at">size=</span>.<span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb12-17"><a href="graphiques.html#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">crs =</span> <span class="fu">st_crs</span>(<span class="st">&#39;ESRI:54030&#39;</span>))<span class="sc">+</span></span>
+<span id="cb12-18"><a href="graphiques.html#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()<span class="sc">+</span></span>
+<span id="cb12-19"><a href="graphiques.html#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb12-20"><a href="graphiques.html#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;light blue&quot;</span>))</span></code></pre></div>
+<p><img src="series_files/figure-html/GRAPHIQUE%20POPULATION%20PAR%20PAYS-1.png" width="672" /></p>
+</div>
+<div id="nourriture-3" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Nourriture<a href="graphiques.html#nourriture-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="graphiques.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;nourriture.RData&quot;</span>)</span>
+<span id="cb13-2"><a href="graphiques.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;BetterWorld.RData&quot;</span>)</span>
+<span id="cb13-3"><a href="graphiques.html#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="graphiques.html#cb13-4" aria-hidden="true" tabindex="-1"></a>nourriture_pays <span class="ot">&lt;-</span> nourriture <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a href="graphiques.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(iso_code2)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a href="graphiques.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-7"><a href="graphiques.html#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(BetterWorld <span class="sc">|&gt;</span> <span class="fu">select</span>(iso_a3, geom2), <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;iso_code2&quot;</span> <span class="ot">=</span> <span class="st">&quot;iso_a3&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-8"><a href="graphiques.html#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(iso_pays, annee, Item) </span>
+<span id="cb13-9"><a href="graphiques.html#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="graphiques.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nourriture_pays, <span class="at">file=</span><span class="st">&quot;nourriture_pays.RData&quot;</span>)</span>
+<span id="cb13-11"><a href="graphiques.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nourriture_pays, <span class="at">file=</span><span class="st">&quot;~/R_studio/Projet/indicateurs_mondiaux/nourriture_pays.RData&quot;</span>)</span>
+<span id="cb13-12"><a href="graphiques.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nourriture_pays, <span class="at">file=</span><span class="st">&quot;~/R_studio/Projet/cartes/nourriture_pays_carto.RData&quot;</span>)</span>
+<span id="cb13-13"><a href="graphiques.html#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="graphiques.html#cb13-14" aria-hidden="true" tabindex="-1"></a>nourriture_pays <span class="sc">|&gt;</span></span>
+<span id="cb13-15"><a href="graphiques.html#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(annee <span class="sc">==</span> <span class="dv">2010</span> <span class="sc">|</span> <span class="fu">is.na</span>(annee)) <span class="sc">|&gt;</span></span>
+<span id="cb13-16"><a href="graphiques.html#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Item <span class="sc">==</span> <span class="st">&quot;Cereals&quot;</span> <span class="sc">|</span> <span class="fu">is.na</span>(Item)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-17"><a href="graphiques.html#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-18"><a href="graphiques.html#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> production, <span class="at">geometry =</span> geom2),<span class="at">color=</span><span class="st">&quot;white&quot;</span>,<span class="at">size=</span>.<span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb13-19"><a href="graphiques.html#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">crs =</span> <span class="fu">st_crs</span>(<span class="st">&#39;ESRI:54030&#39;</span>))<span class="sc">+</span></span>
+<span id="cb13-20"><a href="graphiques.html#cb13-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()<span class="sc">+</span></span>
+<span id="cb13-21"><a href="graphiques.html#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb13-22"><a href="graphiques.html#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;light blue&quot;</span>))</span></code></pre></div>
+<p><img src="series_files/figure-html/GRAPHIQUE%20NOURRITURE%20PAR%20PAYS-1.png" width="672" /></p>
+</div>
+<div id="source-energie" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Source energie<a href="graphiques.html#source-energie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="graphiques.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppression des pays qui n&#39;on pas de iso_code 2 mais on conserve les 4 pays ci-dessous</span></span>
+<span id="cb14-2"><a href="graphiques.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="graphiques.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;energy_source.RData&quot;</span>)</span>
+<span id="cb14-4"><a href="graphiques.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;World.RData&quot;</span>)</span>
+<span id="cb14-5"><a href="graphiques.html#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="graphiques.html#cb14-6" aria-hidden="true" tabindex="-1"></a>energy_source_pays <span class="ot">&lt;-</span> energy_source <span class="sc">|&gt;</span> </span>
+<span id="cb14-7"><a href="graphiques.html#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(iso_pays)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-8"><a href="graphiques.html#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(annee, iso_pays, iso_code2, energy_source, consumption) <span class="sc">|&gt;</span></span>
+<span id="cb14-9"><a href="graphiques.html#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(BetterWorld <span class="sc">|&gt;</span> <span class="fu">select</span>(iso_a3, geom2), <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;iso_code2&quot;</span> <span class="ot">=</span> <span class="st">&quot;iso_a3&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-10"><a href="graphiques.html#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(iso_pays, annee, energy_source) </span>
+<span id="cb14-11"><a href="graphiques.html#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="graphiques.html#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_source_pays, <span class="at">file=</span><span class="st">&quot;energy_source_pays.RData&quot;</span>)</span>
+<span id="cb14-13"><a href="graphiques.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_source_pays, <span class="at">file=</span><span class="st">&quot;~/R_studio/Projet/indicateurs_mondiaux/energy_source_pays.RData&quot;</span>)</span>
+<span id="cb14-14"><a href="graphiques.html#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_source_pays, <span class="at">file=</span><span class="st">&quot;~/R_studio/Projet/cartes/energy_source_pays_carto.RData&quot;</span>)</span></code></pre></div>
+</div>
+<div id="type-energie" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Type energie<a href="graphiques.html#type-energie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="graphiques.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppression des pays qui n&#39;on pas de iso_code 2 mais on conserve les 4 pays ci-dessous</span></span>
+<span id="cb15-2"><a href="graphiques.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="graphiques.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;energy_type.RData&quot;</span>)</span>
+<span id="cb15-4"><a href="graphiques.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;BetterWorld.RData&quot;</span>)</span>
+<span id="cb15-5"><a href="graphiques.html#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="graphiques.html#cb15-6" aria-hidden="true" tabindex="-1"></a>energy_type_pays <span class="ot">&lt;-</span> energy_type <span class="sc">|&gt;</span> </span>
+<span id="cb15-7"><a href="graphiques.html#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(iso_code2)) <span class="sc">|&gt;</span> </span>
+<span id="cb15-8"><a href="graphiques.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(annee, iso_pays, iso_code2, energy_type, consumption) <span class="sc">|&gt;</span></span>
+<span id="cb15-9"><a href="graphiques.html#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(BetterWorld <span class="sc">|&gt;</span> <span class="fu">select</span>(iso_a3, geom2), <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;iso_code2&quot;</span> <span class="ot">=</span> <span class="st">&quot;iso_a3&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb15-10"><a href="graphiques.html#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(iso_pays, annee, energy_type) </span>
+<span id="cb15-11"><a href="graphiques.html#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="graphiques.html#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_type_pays, <span class="at">file=</span><span class="st">&quot;energy_type_pays.RData&quot;</span>)</span>
+<span id="cb15-13"><a href="graphiques.html#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_type_pays, <span class="at">file=</span><span class="st">&quot;~/R_studio/Projet/indicateurs_mondiaux/energy_type_pays.RData&quot;</span>)</span>
+<span id="cb15-14"><a href="graphiques.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_type_pays, <span class="at">file=</span><span class="st">&quot;~/R_studio/Projet/cartes/energy_type_pays_carto.RData&quot;</span>)</span></code></pre></div>
+</div>
+<div id="liste-de-lensemble-des-iso_pays-présents" class="section level3 hasAnchor" number="3.3.5">
+<h3><span class="header-section-number">3.3.5</span> Liste de l’ensemble des iso_pays présents<a href="graphiques.html#liste-de-lensemble-des-iso_pays-présents" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="graphiques.html#cb16-1" aria-hidden="true" tabindex="-1"></a>liste_pays <span class="ot">&lt;-</span> population_pays <span class="sc">|&gt;</span> <span class="fu">distinct</span>(iso_pays) <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="graphiques.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(nourriture_pays <span class="sc">|&gt;</span> <span class="fu">distinct</span>(iso_pays)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="graphiques.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(energy_type <span class="sc">|&gt;</span> <span class="fu">distinct</span>(iso_pays)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-4"><a href="graphiques.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(iso_pays)</span>
+<span id="cb16-5"><a href="graphiques.html#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="graphiques.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(liste_pays, <span class="at">file=</span><span class="st">&quot;liste_pays.RData&quot;</span>)</span>
+<span id="cb16-7"><a href="graphiques.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(liste_pays, <span class="at">file=</span><span class="st">&quot;~/R_studio/Projet/indicateurs_mondiaux/liste_pays.RData&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+<div id="column" class="section level2 hasAnchor" number="3.4" data-width="(500)">
+<h2><span class="header-section-number">3.4</span> Column<a href="graphiques.html#column" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="evolution-de-la-population-mondiale" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Evolution de la population mondiale<a href="graphiques.html#evolution-de-la-population-mondiale" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="series_files/figure-html/GRAPHIQUE%20EVOLUTION%20DE%20LA%20POPULATION%20MONDIALE-1.png" width="1152" /></p>
+</div>
+<div id="evolution-de-la-production-mondiale-de-nourriture" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Evolution de la production mondiale de nourriture<a href="graphiques.html#evolution-de-la-production-mondiale-de-nourriture" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="series_files/figure-html/GRAPHIQUE%20EVOLUTION%20DE%20LA%20PRODUCTION%20MONDIALE%20DE%20NOURRITURE-1.png" width="1152" /></p>
+</div>
+</div>
+<div id="column-1" class="section level2 hasAnchor" number="3.5" data-width="(500)">
+<h2><span class="header-section-number">3.5</span> Column<a href="graphiques.html#column-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="evolution-de-la-production-mondiale-de-source-dénergie" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Evolution de la production mondiale de source d’énergie<a href="graphiques.html#evolution-de-la-production-mondiale-de-source-dénergie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="series_files/figure-html/GRAPHIQUE%20EVOLUTION%20DE%20LA%20PRODUCTION%20MONDIALE%20DE%20SOURCE%20ENERGIE-1.png" width="1152" /></p>
+</div>
+<div id="evolution-de-la-production-mondiale-de-type-dénergie" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Evolution de la production mondiale de type d’énergie<a href="graphiques.html#evolution-de-la-production-mondiale-de-type-dénergie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="series_files/figure-html/GRAPHIQUE%20EVOLUTION%20DE%20LA%20PRODUCTION%20MONDIALE%20DE%20TYPE%20ENERGIE-1.png" width="1152" /></p>
+
+</div>
+</div>
+<div id="column-2" class="section level2 hasAnchor" number="3.6" data-width="(500)">
+<h2><span class="header-section-number">3.6</span> Column<a href="graphiques.html#column-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="evolution-de-la-population-par-continent" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Evolution de la population par continent<a href="graphiques.html#evolution-de-la-population-par-continent" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="series_files/figure-html/GRAPHIQUE%20EVOLUTION%20DE%20LA%20POPULATION%20PAR%20CONTINENT-1.png" width="1152" /></p>
+</div>
+<div id="evolution-de-la-production-de-nourriture-par-continent" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Evolution de la production de nourriture par continent<a href="graphiques.html#evolution-de-la-production-de-nourriture-par-continent" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="series_files/figure-html/GRAPHIQUE%20EVOLUTION%20DE%20LA%20PRODUCTION%20DE%20NOURRITURE%20PAR%20CONTINENT-1.png" width="1152" /></p>
+</div>
+</div>
+<div id="column-3" class="section level2 hasAnchor" number="3.7" data-width="(500)">
+<h2><span class="header-section-number">3.7</span> Column<a href="graphiques.html#column-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="evolution-de-la-production-par-continent-de-source-dénergie" class="section level3 hasAnchor" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> Evolution de la production par continent de source d’énergie<a href="graphiques.html#evolution-de-la-production-par-continent-de-source-dénergie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="series_files/figure-html/GRAPHIQUE%20EVOLUTION%20DE%20LA%20PRODUCTION%20PAR%20CONTINENT%20DE%20SOURCE%20ENERGIE-1.png" width="1152" /></p>
+</div>
+<div id="evolution-de-la-production-par-continent-de-type-dénergie" class="section level3 hasAnchor" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> Evolution de la production par continent de type d’énergie<a href="graphiques.html#evolution-de-la-production-par-continent-de-type-dénergie" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="series_files/figure-html/GRAPHIQUE%20EVOLUTION%20DE%20LA%20PRODUCTION%20PAR%20CONTINENT%20DE%20TYPE%20ENERGIE-1.png" width="1152" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="préparation-des-données.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jules32/bookdown-tutorial/edit/master/projet.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

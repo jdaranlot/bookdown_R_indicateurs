@@ -1,0 +1,104 @@
+---
+title: "Dashboard - continent"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: 
+      version: 4
+      bootswatch: minty
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup continent, include=FALSE}
+
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+
+library(flexdashboard)
+library(tidyverse)
+```
+
+Column {data-width=(500)}
+-------------------------------------
+
+### Evolution de la population par continent
+```{r GRAPHIQUE EVOLUTION DE LA POPULATION PAR CONTINENT, fig.width=12}
+
+load("population_continent.RData") 
+
+ggplot(population_continent)+
+  aes(annee, population, color = region)+
+  theme(panel.background = element_blank(),
+        legend.position = "bottom",
+        panel.grid = element_line(color = "#8ccde3",
+                                  size = 0.2,
+                                  linetype = 1),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  xlab("Année")+
+  ylab("Population")+
+  geom_line()
+
+```
+
+### Evolution de la production de nourriture par continent
+```{r GRAPHIQUE EVOLUTION DE LA PRODUCTION DE NOURRITURE PAR CONTINENT, fig.width=12}
+
+load("nourriture_continent.RData")
+
+ggplot(nourriture_continent)+
+  aes(x = annee, y = production, color=Item)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.text.x = element_text(angle = 45, hjust=1, vjust=1),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  facet_grid(~region, switch = "both")+
+  xlab("Année")+
+  ylab("Production")+
+  geom_line()
+
+```
+
+Column {data-width=(500)}
+-------------------------------------
+
+### Evolution de la production par continent de source d'énergie
+
+```{r GRAPHIQUE EVOLUTION DE LA PRODUCTION PAR CONTINENT DE SOURCE ENERGIE, fig.width=12}
+
+load("energy_source_continent.RData")
+
+ggplot(subset(energy_source_continent, consumption > 0))+
+  aes(x = annee, y = consumption, fill=energy_source)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.text.x = element_text(angle = 45, hjust=1, vjust=1),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  xlab ("Année")+
+  ylab ("Consommation")+
+  facet_grid(~region, switch = "both")+
+  geom_col()
+
+```
+
+### Evolution de la production par continent de type d'énergie
+```{r GRAPHIQUE EVOLUTION DE LA PRODUCTION PAR CONTINENT DE TYPE ENERGIE, fig.width=12}
+
+load("energy_type_continent.RData")
+
+ggplot(subset(energy_type_continent, consumption > 0))+
+  aes(x = annee, y = consumption, fill=energy_type)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.text.x = element_text(angle = 45, hjust=1, vjust=1),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  facet_grid(~region, switch = "both")+
+  xlab ("Année")+
+  ylab ("Consommation")+
+  geom_col()
+```
+

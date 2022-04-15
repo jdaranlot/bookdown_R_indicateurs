@@ -7,6 +7,7 @@
 4. DO NOT initialize this repo with a README
 5. Click the green "create repository" button — this will take you to your new repo
 6. Click the tiny "clone or download" button near the top and COPY URL
+
 7. In the Console, type `usethis::use_git()` and say Yes to the two prompts. This will restart R and give you a new Git tab in the upper right pane.
 8. Now, click on the Terminal tab next to the Console tab. 
 9. Type `git remote add CHOIX_NOM https://github.com/oswaldoforey/test_ultime.git

@@ -1,0 +1,96 @@
+---
+title: "Dashboard - mondial"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: 
+      version: 4
+      bootswatch: minty
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup monde, include=FALSE}
+
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+
+library(flexdashboard)
+library(tidyverse)
+```
+
+Column {data-width=(500)}
+-------------------------------------
+
+### Evolution de la population mondiale
+```{r GRAPHIQUE EVOLUTION DE LA POPULATION MONDIALE, fig.width=12}
+
+load("population_mondiale.RData") 
+
+ggplot(population_mondiale)+
+  aes(x = annee, y = population)+
+  theme(panel.background = element_blank(),
+        panel.grid = element_line(color = "#8ccde3",
+                                  size = 0.2,
+                                  linetype = 1),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  xlab("Année")+
+  ylab("Population")+
+  geom_line(color = "red")
+
+```
+
+### Evolution de la production mondiale de nourriture 
+```{r GRAPHIQUE EVOLUTION DE LA PRODUCTION MONDIALE DE NOURRITURE, fig.width=12}
+
+load("nourriture_mondiale.RData")
+
+ggplot(nourriture_mondiale)+
+  aes(x = annee, y = production, color=Item)+
+  theme(panel.background = element_blank(),
+        panel.grid = element_line(color = "#8ccde3",
+                                  size = 0.2,
+                                  linetype = 1),
+        legend.position = "right",
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  xlab("Année")+
+  ylab("Production")+
+  geom_line(aes(group = Item))
+```
+
+Column {data-width=(500)}
+-------------------------------------
+
+### Evolution de la production mondiale de source d'énergie
+```{r GRAPHIQUE EVOLUTION DE LA PRODUCTION MONDIALE DE SOURCE ENERGIE, fig.width=12}
+
+load("energy_source_monde.RData")
+
+ggplot(subset(energy_source_monde, consumption > 0))+
+  aes(x = annee, y = consumption, fill=energy_source)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  xlab("Année")+
+  ylab("Consommation")+
+  geom_col()
+```
+
+### Evolution de la production mondiale de type d'énergie
+```{r GRAPHIQUE EVOLUTION DE LA PRODUCTION MONDIALE DE TYPE ENERGIE, fig.width=12}
+load("energy_type_monde.RData")
+
+ggplot(subset(energy_type_monde, consumption > 0))+
+  aes(x = annee, y = consumption, fill=energy_type)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  xlab("Année")+
+  ylab("Consommation")+
+  geom_col()
+```
+

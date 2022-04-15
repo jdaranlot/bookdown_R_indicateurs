@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Préparation des données | Dashboard - continent</title>
+  <meta name="description" content="A mini bookdown tutorial book on how to make bookdown books." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Préparation des données | Dashboard - continent" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A mini bookdown tutorial book on how to make bookdown books." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Préparation des données | Dashboard - continent" />
+  
+  <meta name="twitter:description" content="A mini bookdown tutorial book on how to make bookdown books." />
+  
+
+<meta name="author" content="Julien Daranlot" />
+
+
+<meta name="date" content="2022-04-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="graphiques.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Mini Bookdown Tutorial</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learn-all-about-bookdown"><i class="fa fa-check"></i><b>1.1</b> Learn all about Bookdown<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>2</b> Préparation des données<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#population"><i class="fa fa-check"></i><b>2.1</b> Population<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nourriture"><i class="fa fa-check"></i><b>2.2</b> Nourriture<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#source-et-type-dénergie"><i class="fa fa-check"></i><b>2.3</b> Source et type d’énergie<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="graphiques.html"><a href="graphiques.html"><i class="fa fa-check"></i><b>3</b> Graphiques<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="graphiques.html"><a href="graphiques.html#echelle-mondiale"><i class="fa fa-check"></i><b>3.1</b> Echelle mondiale<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="graphiques.html"><a href="graphiques.html#population-1"><i class="fa fa-check"></i><b>3.1.1</b> Population<span></span></a></li>
+<li class="chapter" data-level="3.1.2" data-path="graphiques.html"><a href="graphiques.html#nourriture-1"><i class="fa fa-check"></i><b>3.1.2</b> Nourriture<span></span></a></li>
+<li class="chapter" data-level="3.1.3" data-path="graphiques.html"><a href="graphiques.html#source-dénergie"><i class="fa fa-check"></i><b>3.1.3</b> Source d’énergie<span></span></a></li>
+<li class="chapter" data-level="3.1.4" data-path="graphiques.html"><a href="graphiques.html#type-dénergie"><i class="fa fa-check"></i><b>3.1.4</b> Type d’énergie<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="graphiques.html"><a href="graphiques.html#analyse-par-continent"><i class="fa fa-check"></i><b>3.2</b> Analyse par continent<span></span></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="graphiques.html"><a href="graphiques.html#population-2"><i class="fa fa-check"></i><b>3.2.1</b> Population<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphiques.html"><a href="graphiques.html#nourriture-2"><i class="fa fa-check"></i><b>3.2.2</b> Nourriture<span></span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphiques.html"><a href="graphiques.html#source-dénergie-1"><i class="fa fa-check"></i><b>3.2.3</b> Source d’énergie<span></span></a></li>
+<li class="chapter" data-level="3.2.4" data-path="graphiques.html"><a href="graphiques.html#type-dénergie-1"><i class="fa fa-check"></i><b>3.2.4</b> Type d’énergie<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="graphiques.html"><a href="graphiques.html#analyse-par-pays"><i class="fa fa-check"></i><b>3.3</b> Analyse par pays<span></span></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="graphiques.html"><a href="graphiques.html#population-3"><i class="fa fa-check"></i><b>3.3.1</b> Population<span></span></a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphiques.html"><a href="graphiques.html#nourriture-3"><i class="fa fa-check"></i><b>3.3.2</b> Nourriture<span></span></a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphiques.html"><a href="graphiques.html#source-energie"><i class="fa fa-check"></i><b>3.3.3</b> Source energie<span></span></a></li>
+<li class="chapter" data-level="3.3.4" data-path="graphiques.html"><a href="graphiques.html#type-energie"><i class="fa fa-check"></i><b>3.3.4</b> Type energie<span></span></a></li>
+<li class="chapter" data-level="3.3.5" data-path="graphiques.html"><a href="graphiques.html#liste-de-lensemble-des-iso_pays-présents"><i class="fa fa-check"></i><b>3.3.5</b> Liste de l’ensemble des iso_pays présents<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="graphiques.html"><a href="graphiques.html#column"><i class="fa fa-check"></i><b>3.4</b> Column<span></span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-population-mondiale"><i class="fa fa-check"></i><b>3.4.1</b> Evolution de la population mondiale<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-mondiale-de-nourriture"><i class="fa fa-check"></i><b>3.4.2</b> Evolution de la production mondiale de nourriture<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="graphiques.html"><a href="graphiques.html#column-1"><i class="fa fa-check"></i><b>3.5</b> Column<span></span></a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-mondiale-de-source-dénergie"><i class="fa fa-check"></i><b>3.5.1</b> Evolution de la production mondiale de source d’énergie<span></span></a></li>
+<li class="chapter" data-level="3.5.2" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-mondiale-de-type-dénergie"><i class="fa fa-check"></i><b>3.5.2</b> Evolution de la production mondiale de type d’énergie<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="graphiques.html"><a href="graphiques.html#column-2"><i class="fa fa-check"></i><b>3.6</b> Column<span></span></a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-population-par-continent"><i class="fa fa-check"></i><b>3.6.1</b> Evolution de la population par continent<span></span></a></li>
+<li class="chapter" data-level="3.6.2" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-de-nourriture-par-continent"><i class="fa fa-check"></i><b>3.6.2</b> Evolution de la production de nourriture par continent<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="graphiques.html"><a href="graphiques.html#column-3"><i class="fa fa-check"></i><b>3.7</b> Column<span></span></a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-par-continent-de-source-dénergie"><i class="fa fa-check"></i><b>3.7.1</b> Evolution de la production par continent de source d’énergie<span></span></a></li>
+<li class="chapter" data-level="3.7.2" data-path="graphiques.html"><a href="graphiques.html#evolution-de-la-production-par-continent-de-type-dénergie"><i class="fa fa-check"></i><b>3.7.2</b> Evolution de la production par continent de type d’énergie<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Dashboard - continent</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="préparation-des-données" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Préparation des données<a href="préparation-des-données.html#préparation-des-données" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Les fichiers sont chargés, manipulés puis enregistrés au format RData.</p>
+<div id="population" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Population<a href="préparation-des-données.html#population" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="préparation-des-données.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chargement des bibliothèques et du working directory</span></span>
+<span id="cb1-2"><a href="préparation-des-données.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="préparation-des-données.html#cb1-3" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES_UN.csv&quot;</span>,</span>
+<span id="cb1-4"><a href="préparation-des-données.html#cb1-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">skip =</span> <span class="dv">16</span>,</span>
+<span id="cb1-5"><a href="préparation-des-données.html#cb1-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">na =</span> <span class="st">&quot;...&quot;</span>,</span>
+<span id="cb1-6"><a href="préparation-des-données.html#cb1-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">decimal_mark =</span> <span class="st">&quot;,&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-7"><a href="préparation-des-données.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;region&quot;</span> <span class="ot">=</span> <span class="dv">3</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-8"><a href="préparation-des-données.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Index, <span class="sc">-</span>Variant, <span class="sc">-</span>Notes, <span class="sc">-</span><span class="st">&quot;Country code&quot;</span>, <span class="sc">-</span><span class="st">&quot;Parent code&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-9"><a href="préparation-des-données.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;World&quot;</span>, <span class="st">&quot;Region&quot;</span>, <span class="st">&quot;Country/Area&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="préparation-des-données.html#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso_code2=</span><span class="fu">countrycode</span>(region, <span class="at">origin =</span> <span class="st">&quot;country.name&quot;</span>, <span class="at">destination =</span> <span class="st">&quot;iso3c&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-11"><a href="préparation-des-données.html#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso_pays=</span><span class="fu">countrycode</span>(iso_code2, <span class="at">origin =</span> <span class="st">&quot;iso3c&quot;</span>, <span class="at">destination =</span> <span class="st">&quot;country.name&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-12"><a href="préparation-des-données.html#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="st">&quot;1950&quot;</span><span class="sc">:</span><span class="st">&quot;2020&quot;</span>,</span>
+<span id="cb1-13"><a href="préparation-des-données.html#cb1-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;annee&quot;</span>,</span>
+<span id="cb1-14"><a href="préparation-des-données.html#cb1-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;population&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-15"><a href="préparation-des-données.html#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> <span class="fu">str_replace</span>(region, <span class="st">&quot;Latin America and the Caribbean&quot;</span>, <span class="st">&quot;South America&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-16"><a href="préparation-des-données.html#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">annee =</span> <span class="fu">as.integer</span>(annee)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-17"><a href="préparation-des-données.html#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">population =</span> population<span class="sc">*</span><span class="dv">1000</span>) </span>
+<span id="cb1-18"><a href="préparation-des-données.html#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="préparation-des-données.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(population, <span class="at">file =</span> <span class="st">&quot;population.Rdata&quot;</span>)</span></code></pre></div>
+</div>
+<div id="nourriture" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Nourriture<a href="préparation-des-données.html#nourriture" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="préparation-des-données.html#cb2-1" aria-hidden="true" tabindex="-1"></a>nourriture <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;Production_Crops_Livestock_E_All_Data.csv&quot;</span>,</span>
+<span id="cb2-2"><a href="préparation-des-données.html#cb2-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&#39;ISO-8859-1&#39;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="préparation-des-données.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">ends_with</span>(<span class="st">&quot;F&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="préparation-des-données.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,Y1961<span class="sc">:</span>Y2020) <span class="sc">|&gt;</span> </span>
+<span id="cb2-5"><a href="préparation-des-données.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (Element <span class="sc">==</span> <span class="st">&quot;Production&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="préparation-des-données.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Element) <span class="sc">|&gt;</span></span>
+<span id="cb2-7"><a href="préparation-des-données.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Item, <span class="st">&quot;Total&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-8"><a href="préparation-des-données.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Item=</span><span class="fu">str_replace</span>(Item,<span class="st">&quot;, Total&quot;</span>,<span class="st">&quot;&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-9"><a href="préparation-des-données.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;region&quot;</span> <span class="ot">=</span> <span class="st">&quot;Area&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-10"><a href="préparation-des-données.html#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso_code2=</span><span class="fu">countrycode</span>(region, <span class="at">origin =</span> <span class="st">&quot;country.name&quot;</span>, <span class="at">destination =</span> <span class="st">&quot;iso3c&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-11"><a href="préparation-des-données.html#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso_pays=</span><span class="fu">countrycode</span>(iso_code2, <span class="at">origin =</span> <span class="st">&quot;iso3c&quot;</span>, <span class="at">destination =</span> <span class="st">&quot;country.name&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-12"><a href="préparation-des-données.html#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span>Y1961<span class="sc">:</span>Y2020,</span>
+<span id="cb2-13"><a href="préparation-des-données.html#cb2-13" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="st">&quot;annee&quot;</span>,</span>
+<span id="cb2-14"><a href="préparation-des-données.html#cb2-14" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">&quot;production&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-15"><a href="préparation-des-données.html#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">annee =</span> <span class="fu">str_sub</span>(annee, <span class="at">start=</span><span class="dv">2</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-16"><a href="préparation-des-données.html#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">annee =</span> <span class="fu">as.integer</span>(annee))</span>
+<span id="cb2-17"><a href="préparation-des-données.html#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="préparation-des-données.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nourriture, <span class="at">file =</span> <span class="st">&quot;nourriture.Rdata&quot;</span>)</span></code></pre></div>
+</div>
+<div id="source-et-type-dénergie" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Source et type d’énergie<a href="préparation-des-données.html#source-et-type-dénergie" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="préparation-des-données.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chargement des codes iso</span></span>
+<span id="cb3-2"><a href="préparation-des-données.html#cb3-2" aria-hidden="true" tabindex="-1"></a>code_iso <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;countries_iso_codes.csv&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="préparation-des-données.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">7</span>)</span>
+<span id="cb3-4"><a href="préparation-des-données.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="préparation-des-données.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Table energy globale</span></span>
+<span id="cb3-6"><a href="préparation-des-données.html#cb3-6" aria-hidden="true" tabindex="-1"></a>energy <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;owid-energy-data__OWID.csv&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="préparation-des-données.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>iso_code) <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="préparation-des-données.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">ends_with</span>(<span class="st">&quot;consumption&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="préparation-des-données.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso_code2=</span><span class="fu">countrycode</span>(country, <span class="at">origin =</span> <span class="st">&quot;country.name&quot;</span>, <span class="at">destination =</span> <span class="st">&quot;iso3c&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-10"><a href="préparation-des-données.html#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso_pays=</span><span class="fu">countrycode</span>(iso_code2, <span class="at">origin =</span> <span class="st">&quot;iso3c&quot;</span>, <span class="at">destination =</span> <span class="st">&quot;country.name&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-11"><a href="préparation-des-données.html#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="st">&quot;biofuel_consumption&quot;</span><span class="sc">:</span><span class="st">&quot;wind_consumption&quot;</span>,</span>
+<span id="cb3-12"><a href="préparation-des-données.html#cb3-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="st">&quot;energy_source&quot;</span>,</span>
+<span id="cb3-13"><a href="préparation-des-données.html#cb3-13" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">&quot;consumption&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-14"><a href="préparation-des-données.html#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">energy_source =</span> <span class="fu">str_remove</span>(energy_source, <span class="st">&quot;_consumption&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-15"><a href="préparation-des-données.html#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso_code2=</span><span class="fu">countrycode</span>(country, <span class="at">origin =</span> <span class="st">&quot;country.name&quot;</span>, <span class="at">destination =</span> <span class="st">&quot;iso3c&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-16"><a href="préparation-des-données.html#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iso_pays=</span><span class="fu">countrycode</span>(iso_code2, <span class="at">origin =</span> <span class="st">&quot;iso3c&quot;</span>, <span class="at">destination =</span> <span class="st">&quot;country.name&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-17"><a href="préparation-des-données.html#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;annee&quot;</span><span class="ot">=</span><span class="st">&quot;year&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-18"><a href="préparation-des-données.html#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(code_iso, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;iso_code2&quot;</span> <span class="ot">=</span> <span class="st">&quot;alpha-3&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-19"><a href="préparation-des-données.html#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;sub_region&quot;</span> <span class="ot">=</span> <span class="st">&quot;sub-region&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-20"><a href="préparation-des-données.html#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remplacement de la region par la sous-region pour region = americas</span></span>
+<span id="cb3-21"><a href="préparation-des-données.html#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Attribution des continents pour les pays sans code ISO</span></span>
+<span id="cb3-22"><a href="préparation-des-données.html#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> <span class="fu">case_when</span>(region <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span> <span class="sc">~</span> sub_region,</span>
+<span id="cb3-23"><a href="préparation-des-données.html#cb3-23" aria-hidden="true" tabindex="-1"></a>                            country <span class="sc">==</span> <span class="st">&quot;Kosovo&quot;</span> <span class="sc">~</span> <span class="st">&quot;Europe&quot;</span>,</span>
+<span id="cb3-24"><a href="préparation-des-données.html#cb3-24" aria-hidden="true" tabindex="-1"></a>                            country <span class="sc">==</span> <span class="st">&quot;Czechoslovakia&quot;</span> <span class="sc">~</span> <span class="st">&quot;Europe&quot;</span>,</span>
+<span id="cb3-25"><a href="préparation-des-données.html#cb3-25" aria-hidden="true" tabindex="-1"></a>                            country <span class="sc">==</span> <span class="st">&quot;Yugoslavia&quot;</span> <span class="sc">~</span> <span class="st">&quot;Europe&quot;</span>,</span>
+<span id="cb3-26"><a href="préparation-des-données.html#cb3-26" aria-hidden="true" tabindex="-1"></a>                            country <span class="sc">==</span> <span class="st">&quot;Netherlands Antilles&quot;</span> <span class="sc">~</span> <span class="st">&quot;Latin America and the Caribbean&quot;</span>,</span>
+<span id="cb3-27"><a href="préparation-des-données.html#cb3-27" aria-hidden="true" tabindex="-1"></a>                            country <span class="sc">==</span> <span class="st">&quot;Timor&quot;</span> <span class="sc">~</span> <span class="st">&quot;Asia&quot;</span>,</span>
+<span id="cb3-28"><a href="préparation-des-données.html#cb3-28" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(region))) <span class="sc">|&gt;</span></span>
+<span id="cb3-29"><a href="préparation-des-données.html#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> <span class="fu">str_replace</span>(region, <span class="st">&quot;Latin America and the Caribbean&quot;</span>, <span class="st">&quot;South America&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-30"><a href="préparation-des-données.html#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>sub_region)</span>
+<span id="cb3-31"><a href="préparation-des-données.html#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="préparation-des-données.html#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Table Sources d&#39;énergie</span></span>
+<span id="cb3-33"><a href="préparation-des-données.html#cb3-33" aria-hidden="true" tabindex="-1"></a>energy_source <span class="ot">&lt;-</span> energy <span class="sc">|&gt;</span> </span>
+<span id="cb3-34"><a href="préparation-des-données.html#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(energy_source <span class="sc">!=</span> <span class="st">&quot;fossil_fuel&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb3-35"><a href="préparation-des-données.html#cb3-35" aria-hidden="true" tabindex="-1"></a>           energy_source <span class="sc">!=</span> <span class="st">&quot;other_renewable&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb3-36"><a href="préparation-des-données.html#cb3-36" aria-hidden="true" tabindex="-1"></a>           energy_source <span class="sc">!=</span> <span class="st">&quot;primary_energy&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb3-37"><a href="préparation-des-données.html#cb3-37" aria-hidden="true" tabindex="-1"></a>           energy_source <span class="sc">!=</span> <span class="st">&quot;low_carbon&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb3-38"><a href="préparation-des-données.html#cb3-38" aria-hidden="true" tabindex="-1"></a>           energy_source <span class="sc">!=</span> <span class="st">&quot;renewables&quot;</span>)</span>
+<span id="cb3-39"><a href="préparation-des-données.html#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="préparation-des-données.html#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_source, <span class="at">file =</span> <span class="st">&quot;energy_source.Rdata&quot;</span>)</span>
+<span id="cb3-41"><a href="préparation-des-données.html#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="préparation-des-données.html#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="préparation-des-données.html#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Table des types d&#39;énergie</span></span>
+<span id="cb3-44"><a href="préparation-des-données.html#cb3-44" aria-hidden="true" tabindex="-1"></a>energy_type <span class="ot">&lt;-</span> energy <span class="sc">|&gt;</span></span>
+<span id="cb3-45"><a href="préparation-des-données.html#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;energy_type&quot;</span> <span class="ot">=</span> <span class="st">&quot;energy_source&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-46"><a href="préparation-des-données.html#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(energy_type <span class="sc">==</span> <span class="st">&quot;fossil_fuel&quot;</span> <span class="sc">|</span></span>
+<span id="cb3-47"><a href="préparation-des-données.html#cb3-47" aria-hidden="true" tabindex="-1"></a>           energy_type <span class="sc">==</span> <span class="st">&quot;primary_energy&quot;</span> <span class="sc">|</span></span>
+<span id="cb3-48"><a href="préparation-des-données.html#cb3-48" aria-hidden="true" tabindex="-1"></a>           energy_type <span class="sc">==</span> <span class="st">&quot;other_renewable&quot;</span> <span class="sc">|</span></span>
+<span id="cb3-49"><a href="préparation-des-données.html#cb3-49" aria-hidden="true" tabindex="-1"></a>           energy_type <span class="sc">==</span> <span class="st">&quot;renewables&quot;</span>)</span>
+<span id="cb3-50"><a href="préparation-des-données.html#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="préparation-des-données.html#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(energy_type, <span class="at">file =</span> <span class="st">&quot;energy_type.Rdata&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphiques.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jules32/bookdown-tutorial/edit/master/projet.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

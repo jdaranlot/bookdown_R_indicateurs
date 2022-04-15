@@ -1,0 +1,439 @@
+---
+title: "Population_mondiale"
+author: "Julien Daranlot"
+date: '2022-04-11'
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup projet, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(tidyverse)
+library(flexdashboard)
+library(countrycode)
+library(shiny)
+library(shinydashboard)
+library(tmap)
+library(sf)
+data("World")
+BetterWorld  <- World |>
+  select(iso_a3, sovereignt, geometry) |> 
+  mutate(geom2 = st_transform(geometry, st_crs('ESRI:54030')))
+```
+
+# Préparation des données
+
+Les fichiers sont chargés, manipulés puis enregistrés au format RData.
+
+## Population
+
+```{r POPULATION CHARGEMENT}
+# Chargement des bibliothèques et du working directory
+
+population <- read_delim("WPP2019_POP_F01_1_TOTAL_POPULATION_BOTH_SEXES_UN.csv",
+                         skip = 16,
+                         na = "...",
+                         locale = locale(decimal_mark = ",")) |> 
+  rename("region" = 3) |>
+  select(-Index, -Variant, -Notes, -"Country code", -"Parent code") |>
+  filter(Type %in% c("World", "Region", "Country/Area")) |>
+  mutate(iso_code2=countrycode(region, origin = "country.name", destination = "iso3c")) |> 
+  mutate(iso_pays=countrycode(iso_code2, origin = "iso3c", destination = "country.name")) |> 
+  pivot_longer(cols = "1950":"2020",
+               names_to = "annee",
+               values_to = "population") |>
+  mutate(region = str_replace(region, "Latin America and the Caribbean", "South America")) |> 
+  mutate(annee = as.integer(annee)) |> 
+  mutate(population = population*1000) 
+
+save(population, file = "population.Rdata")
+```
+
+## Nourriture
+
+```{r NOURRITURE CHARGEMENT}
+
+nourriture <- read_delim("Production_Crops_Livestock_E_All_Data.csv",
+                         locale = locale(encoding = 'ISO-8859-1')) |> 
+  select(-ends_with("F")) |> 
+  select(2,4,6,Y1961:Y2020) |> 
+  filter (Element == "Production") |>
+  select(-Element) |>
+  filter(str_detect(Item, "Total")) |>
+  mutate(Item=str_replace(Item,", Total","")) |> 
+  rename("region" = "Area") |> 
+  mutate(iso_code2=countrycode(region, origin = "country.name", destination = "iso3c")) |> 
+  mutate(iso_pays=countrycode(iso_code2, origin = "iso3c", destination = "country.name")) |> 
+  pivot_longer(cols=Y1961:Y2020,
+                 names_to = "annee",
+                 values_to = "production") |> 
+  mutate(annee = str_sub(annee, start=2)) |> 
+  mutate(annee = as.integer(annee))
+
+save(nourriture, file = "nourriture.Rdata")
+
+```
+
+## Source et type d'énergie
+
+```{r SOURCE ET TYPE ENERGIE CHARGEMENT}
+
+# Chargement des codes iso
+code_iso <- read_delim("countries_iso_codes.csv") |> 
+  select(3,6,7)
+
+# Table energy globale
+energy <- read_delim("owid-energy-data__OWID.csv") |>
+  select(-iso_code) |> 
+  select(1:2, ends_with("consumption")) |>
+  mutate(iso_code2=countrycode(country, origin = "country.name", destination = "iso3c")) |> 
+  mutate(iso_pays=countrycode(iso_code2, origin = "iso3c", destination = "country.name")) |>
+  pivot_longer(cols="biofuel_consumption":"wind_consumption",
+                 names_to = "energy_source",
+                 values_to = "consumption") |>
+  mutate(energy_source = str_remove(energy_source, "_consumption")) |> 
+  mutate(iso_code2=countrycode(country, origin = "country.name", destination = "iso3c")) |> 
+  mutate(iso_pays=countrycode(iso_code2, origin = "iso3c", destination = "country.name")) |>
+  rename("annee"="year") |> 
+  left_join(code_iso, by = c("iso_code2" = "alpha-3")) |> 
+  rename("sub_region" = "sub-region") |> 
+  # Remplacement de la region par la sous-region pour region = americas
+  # Attribution des continents pour les pays sans code ISO
+  mutate(region = case_when(region == "Americas" ~ sub_region,
+                            country == "Kosovo" ~ "Europe",
+                            country == "Czechoslovakia" ~ "Europe",
+                            country == "Yugoslavia" ~ "Europe",
+                            country == "Netherlands Antilles" ~ "Latin America and the Caribbean",
+                            country == "Timor" ~ "Asia",
+                            TRUE ~ as.character(region))) |>
+  mutate(region = str_replace(region, "Latin America and the Caribbean", "South America")) |> 
+  select(-sub_region)
+
+# Table Sources d'énergie
+energy_source <- energy |> 
+  filter(energy_source != "fossil_fuel" &
+           energy_source != "other_renewable" &
+           energy_source != "primary_energy" &
+           energy_source != "low_carbon" &
+           energy_source != "renewables")
+
+save(energy_source, file = "energy_source.Rdata")
+
+
+# Table des types d'énergie
+energy_type <- energy |>
+  rename("energy_type" = "energy_source") |> 
+  filter(energy_type == "fossil_fuel" |
+           energy_type == "primary_energy" |
+           energy_type == "other_renewable" |
+           energy_type == "renewables")
+
+save(energy_type, file = "energy_type.Rdata")
+
+```
+
+# Graphiques
+
+## Echelle mondiale
+
+### Population
+
+```{r GRAPHIQUE POPULATION MONDIALE}
+
+load ("population.Rdata")
+
+population_mondiale <- population |> 
+  filter(region == "WORLD")
+
+save(population_mondiale, file = "population_mondiale.RData")
+ggplot(population_mondiale)+
+  aes(x = annee, y = population)+
+  theme(panel.background = element_blank(),
+        panel.grid = element_line(color = "#8ccde3",
+                                  size = 0.2,
+                                  linetype = 1),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  xlab("Année")+
+  ylab("Population")+
+  geom_line(color = "red")
+```
+
+### Nourriture
+
+```{r GRAPHQUIQUE NOURRITURE MONDIALE}
+
+load("nourriture.RData")
+
+nourriture_mondiale <- nourriture |>  
+  filter(region == "World")
+
+save(nourriture_mondiale, file = "nourriture_mondiale.RData")
+
+ggplot(nourriture_mondiale)+
+  aes(x = annee, y = production, color=Item)+
+  theme(panel.background = element_blank(),
+        panel.grid = element_line(color = "#8ccde3",
+                                  size = 0.2,
+                                  linetype = 1),
+        legend.position = "right",
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  geom_line(aes(group = Item))
+
+```
+
+### Source d'énergie
+
+```{r ENERGY MONDE SOURCE}
+
+load("energy_source.Rdata")
+
+energy_source_monde <- energy_source |> 
+  filter(country == "World")
+
+save(energy_source_monde, file = "energy_source_monde.RData")
+
+ggplot(subset(energy_source_monde, consumption > 0))+
+  aes(x = annee, y = consumption, fill=energy_source)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  geom_col()
+
+```
+
+### Type d'énergie
+
+```{r ENERGY MONDE TYPE}
+
+load("energy_type.RData")
+
+energy_type_monde <- energy_type |> 
+  filter(country == "World")
+
+save(energy_type_monde, file = "energy_type_monde.RData")
+
+ggplot(subset(energy_type_monde, consumption > 0))+
+  aes(x = annee, y = consumption, fill=energy_type)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  geom_col()
+
+```
+
+## Analyse par continent
+
+### Population
+
+```{r POPULATION CONTINENT GRAPHIQUE}
+
+load("population.RData")
+
+population_continent <- population |> 
+  filter (Type == "Region")
+
+save(population_continent, file = "population_continent.RData")
+
+ggplot(population_continent)+
+  aes(annee, population, color = region)+
+  theme(panel.background = element_blank(),
+        legend.position = "bottom",
+        panel.grid = element_line(color = "#8ccde3",
+                                  size = 0.2,
+                                  linetype = 1),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  geom_line()
+
+```
+
+### Nourriture
+
+```{r NOURRITURE CONTINENT GRAPHIQUE}
+
+load("nourriture.Rdata")
+
+nourriture_continent <- nourriture |> 
+  filter(region == "Europe" |
+           region == "Africa" |
+           region == "Asia" |
+           region == "Northern America" |
+           region == "South America" |
+           region == "Oceania")
+
+save(nourriture_continent, file = "nourriture_continent.RData")
+
+ggplot(nourriture_continent)+
+  aes(x = annee, y = production, color=Item)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.text.x = element_text(angle = 45, hjust=1, vjust=1),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  facet_grid(~region)+
+  geom_line()
+
+```
+
+### Source d'énergie
+
+```{r ENERGIE CONTINENT SOURCE}
+
+load("energy_source.RData")
+
+energy_source_continent <- energy_source |> 
+  group_by(region, annee, energy_source) |> 
+  summarize(consumption = sum(consumption, na.rm = TRUE)) |>
+  filter(region != "NA") |> 
+  ungroup()
+
+save(energy_source_continent, file = "energy_source_continent.RData")
+
+ggplot(subset(energy_source_continent, consumption > 0))+
+  aes(x = annee, y = consumption, fill=energy_source)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.text.x = element_text(angle = 45),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  facet_grid(~region)+
+  geom_col()
+
+```
+
+### Type d'énergie
+
+```{r ENERGIE CONTINENT TYPE}
+
+load("energy_type.RData")
+
+energy_type_continent <- energy_type |> 
+  group_by(region, annee, energy_type) |> 
+  summarize(consumption = sum(consumption, na.rm = TRUE)) |> 
+  filter(region != "NA") |> 
+  ungroup()
+
+save(energy_type_continent, file = "energy_type_continent.RData")
+
+ggplot(subset(energy_type_continent, consumption > 0))+
+  aes(x = annee, y = consumption, fill=energy_type)+
+  theme(panel.background = element_blank(),
+        legend.position = "right",
+        axis.text.x = element_text(angle = 45),
+        axis.line = element_line(size = 0.5, colour = "black", linetype=1))+
+  facet_grid(~region)+
+  geom_col()
+
+```
+
+## Analyse par pays
+
+### Population
+
+```{r GRAPHIQUE POPULATION PAR PAYS}
+load("population.RData")
+load("BetterWorld.RData")
+
+population_pays <- population |> 
+  filter(Type == "Country/Area") |> 
+  select(-(1:2)) |>
+  right_join(BetterWorld |> select(iso_a3, geom2), by=c("iso_code2" = "iso_a3")) 
+
+save(population_pays, file="population_pays.RData")
+save(population_pays, file="~/R_studio/Projet/indicateurs_mondiaux/population_pays.RData")
+save(population_pays, file="~/R_studio/Projet/cartes/population_pays_carto.RData")
+
+population_pays |>
+  filter(annee == 2010 | is.na(annee)) |> 
+  ggplot() +
+  geom_sf(aes(fill = log10(population), geometry = geom2),color="white",size=.2)+
+  coord_sf(crs = st_crs('ESRI:54030'))+
+  scale_fill_viridis_c()+
+  theme_minimal()+
+  theme(panel.background = element_rect(fill = "light blue"))
+
+
+```
+
+### Nourriture
+
+```{r GRAPHIQUE NOURRITURE PAR PAYS}
+
+load("nourriture.RData")
+load("BetterWorld.RData")
+
+nourriture_pays <- nourriture |> 
+  filter(!is.na(iso_code2)) |> 
+  select(-1) |>
+  right_join(BetterWorld |> select(iso_a3, geom2), by=c("iso_code2" = "iso_a3")) |> 
+  arrange(iso_pays, annee, Item) 
+
+save(nourriture_pays, file="nourriture_pays.RData")
+save(nourriture_pays, file="~/R_studio/Projet/indicateurs_mondiaux/nourriture_pays.RData")
+save(nourriture_pays, file="~/R_studio/Projet/cartes/nourriture_pays_carto.RData")
+
+nourriture_pays |>
+  filter(annee == 2010 | is.na(annee)) |>
+  filter(Item == "Cereals" | is.na(Item)) |> 
+  ggplot() +
+  geom_sf(aes(fill = production, geometry = geom2),color="white",size=.2)+
+  coord_sf(crs = st_crs('ESRI:54030'))+
+  scale_fill_viridis_c()+
+  theme_minimal()+
+  theme(panel.background = element_rect(fill = "light blue"))
+
+```
+
+### Source energie
+
+```{r GRAPHIQUE SOURCE ENERGIE PAR PAYS}
+
+# Suppression des pays qui n'on pas de iso_code 2 mais on conserve les 4 pays ci-dessous
+
+load("energy_source.RData")
+load("World.RData")
+
+energy_source_pays <- energy_source |> 
+  filter(!is.na(iso_pays)) |> 
+  select(annee, iso_pays, iso_code2, energy_source, consumption) |>
+  right_join(BetterWorld |> select(iso_a3, geom2), by=c("iso_code2" = "iso_a3")) |> 
+  arrange(iso_pays, annee, energy_source) 
+
+save(energy_source_pays, file="energy_source_pays.RData")
+save(energy_source_pays, file="~/R_studio/Projet/indicateurs_mondiaux/energy_source_pays.RData")
+save(energy_source_pays, file="~/R_studio/Projet/cartes/energy_source_pays_carto.RData")
+
+```
+
+### Type energie
+
+```{r}
+
+# Suppression des pays qui n'on pas de iso_code 2 mais on conserve les 4 pays ci-dessous
+
+load("energy_type.RData")
+load("BetterWorld.RData")
+
+energy_type_pays <- energy_type |> 
+  filter(!is.na(iso_code2)) |> 
+  select(annee, iso_pays, iso_code2, energy_type, consumption) |>
+  right_join(BetterWorld |> select(iso_a3, geom2), by=c("iso_code2" = "iso_a3")) |> 
+  arrange(iso_pays, annee, energy_type) 
+
+save(energy_type_pays, file="energy_type_pays.RData")
+save(energy_type_pays, file="~/R_studio/Projet/indicateurs_mondiaux/energy_type_pays.RData")
+save(energy_type_pays, file="~/R_studio/Projet/cartes/energy_type_pays_carto.RData")
+
+```
+
+### Liste de l'ensemble des iso_pays présents
+
+```{r}
+
+liste_pays <- population_pays |> distinct(iso_pays) |> 
+  full_join(nourriture_pays |> distinct(iso_pays)) |> 
+  full_join(energy_type |> distinct(iso_pays)) |> 
+  arrange(iso_pays)
+
+save(liste_pays, file="liste_pays.RData")
+save(liste_pays, file="~/R_studio/Projet/indicateurs_mondiaux/liste_pays.RData")
+
+```
